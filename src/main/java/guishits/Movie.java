@@ -1,7 +1,9 @@
 package guishits;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Movie {
     private final String title;
@@ -13,6 +15,10 @@ public class Movie {
     private final double price;      // per ticket
     private final String emoji;      // placeholder poster
 
+    // seats left for each showtime
+    private final Map<String, Integer> seatsLeft = new HashMap<>();
+    private static final int SEATS_PER_SHOWING = 20;   // set to 3 while testing
+
     public Movie(String title, String genre, int duration, String rating,
                  String synopsis, String[] showtimes, double price, String emoji) {
         this.title = title;
@@ -23,6 +29,10 @@ public class Movie {
         this.showtimes = showtimes;
         this.price = price;
         this.emoji = emoji;
+
+        for (String t : showtimes) {
+            seatsLeft.put(t, SEATS_PER_SHOWING);
+        }
     }
 
     public String getTitle()       { return title; }
@@ -38,8 +48,35 @@ public class Movie {
         return genre + " | " + duration + " min";
     }
 
+    // How many seats are left for a given showtime
+    public int getSeatsLeft(String showtime) {
+        return seatsLeft.getOrDefault(showtime, 0);
+    }
+
+    // Throws an error when there are not enough tickets left
+    public void reserve(String showtime, int tickets) {
+        int left = getSeatsLeft(showtime);
+
+        if (left == 0) {
+            throw new IllegalStateException(
+                    "Sorry, the " + showtime + " showing of " + title + " is sold out.");
+        }
+        if (tickets > left) {
+            throw new IllegalStateException(
+                    "Only " + left + " ticket(s) left for the " + showtime + " showing.");
+        }
+        seatsLeft.put(showtime, left - tickets);
+    }
+
+    // Built once, so every page shares the same Movie objects (and seat counts)
+    private static final List<Movie> SAMPLE = buildSampleMovies();
+
     // Temporary sample data - replace with database/file loading later
     public static List<Movie> sampleMovies() {
+        return SAMPLE;
+    }
+
+    private static List<Movie> buildSampleMovies() {
         String[] times = {"10:00 AM", "1:30 PM", "4:45 PM", "7:30 PM"};
         List<Movie> list = new ArrayList<>();
 

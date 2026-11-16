@@ -237,13 +237,33 @@ public class MoviesPanel extends JPanel {
         reserve.setFocusPainted(false);
         reserve.setMaximumSize(new Dimension(200, 40));
         reserve.addActionListener(e -> {
-            // TODO: save the reservation (database/file) and open seat selection
-            JOptionPane.showMessageDialog(dialog,
-                    "Reserved " + qty.getValue() + " ticket(s) for\n"
-                            + movie.getTitle() + " at " + timeBox.getSelectedItem() + "\n"
-                            + total.getText(),
-                    "Reservation Successful", JOptionPane.INFORMATION_MESSAGE);
-            dialog.dispose();
+            String showtime = (String) timeBox.getSelectedItem();
+            int tickets = (Integer) qty.getValue();
+
+            try {
+                // throws IllegalStateException if sold out / not enough seats
+                movie.reserve(showtime, tickets);
+
+                int remaining = movie.getSeatsLeft(showtime);
+                String seatsMsg = (remaining == 0)
+                        ? "That was the last of the tickets. This showing is now SOLD OUT."
+                        : "Seats still available for this showing: " + remaining;
+
+                // TODO: save the reservation (database/file) and open seat selection
+                JOptionPane.showMessageDialog(dialog,
+                        "Reserved " + tickets + " ticket(s) for\n"
+                                + movie.getTitle() + " at " + showtime + "\n"
+                                + total.getText() + "\n\n"
+                                + seatsMsg,
+                        "Reservation Successful", JOptionPane.INFORMATION_MESSAGE);
+                dialog.dispose();
+
+            } catch (IllegalStateException ex) {
+                // dialog stays open so the user can change showtime or quantity
+                JOptionPane.showMessageDialog(dialog,
+                        ex.getMessage(),
+                        "Not Enough Tickets", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         for (JComponent c : new JComponent[]{title, meta, synopsis, timeLbl,

@@ -17,4 +17,22 @@
         <maven.compiler.target>19</maven.compiler.target>
     </properties>
 
+    <dependencies>
+
+        <!-- ZXing Core: QR Code Generation -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+
+        <!-- ZXing JavaSE: Convert QR Codes into Images -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+
+    </dependencies>
+
 </project>

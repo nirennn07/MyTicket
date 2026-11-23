@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class BookingService {
 
     private ArrayList<Movie> movies;
@@ -49,7 +48,6 @@ public class BookingService {
         bookings = new ArrayList<>();
         tickets = new ArrayList<>();
 
-        // Demo movies use M001 to M005
         movieCounter = 6;
 
         scheduleCounter = 1;
@@ -66,8 +64,6 @@ public class BookingService {
     // =========================================================
 
     private void loadDemoData() {
-
-        // Movies
 
         Movie movie1 = new Movie(
                 "M001",
@@ -113,7 +109,6 @@ public class BookingService {
                 148,
                 "PG-13"
         );
-
 
         movies.add(movie1);
         movies.add(movie2);
@@ -233,8 +228,6 @@ public class BookingService {
     // MOVIE MANAGEMENT
     // =========================================================
 
-    // Add an existing Movie object
-
     public void addMovie(Movie movie) {
 
         if (movie == null) {
@@ -257,9 +250,6 @@ public class BookingService {
 
     }
 
-
-    // Add a movie using individual fields
-    // This method is used by AdminPanel
 
     public Movie addMovie(
             String title,
@@ -326,8 +316,6 @@ public class BookingService {
         }
 
         movies.remove(movie);
-
-        // Remove schedules associated with the movie
 
         schedules.removeIf(schedule ->
                 schedule.getMovie()
@@ -637,6 +625,7 @@ public class BookingService {
 
 
     // Booking with ticket types and add-ons
+    // Original method preserved for compatibility
 
     public Booking createBooking(
             Schedule schedule,
@@ -645,6 +634,30 @@ public class BookingService {
             boolean popcornSelected,
             boolean drinkSelected,
             boolean snackSelected) {
+
+        return createBooking(
+                schedule,
+                selectedSeats,
+                ticketTypes,
+                popcornSelected,
+                drinkSelected,
+                snackSelected,
+                "Unknown"
+        );
+
+    }
+
+
+    // NEW: Booking with username
+
+    public Booking createBooking(
+            Schedule schedule,
+            ArrayList<Seat> selectedSeats,
+            Map<String, TicketType> ticketTypes,
+            boolean popcornSelected,
+            boolean drinkSelected,
+            boolean snackSelected,
+            String username) {
 
 
         // =====================================================
@@ -664,6 +677,14 @@ public class BookingService {
 
             throw new IllegalArgumentException(
                     "Please select at least one seat."
+            );
+
+        }
+
+        if (username == null || username.trim().isEmpty()) {
+
+            throw new IllegalArgumentException(
+                    "Username cannot be empty."
             );
 
         }
@@ -808,8 +829,6 @@ public class BookingService {
         // DECORATOR PATTERN - ADD-ONS
         // =====================================================
 
-        // Base cost is the ticket amount after discounts.
-
         BookingCost bookingCost =
                 new BaseBookingCost(finalAmount);
 
@@ -850,18 +869,18 @@ public class BookingService {
         }
 
 
-        // Calculate total add-on amount.
+        // Calculate total add-on amount
 
         double addOnAmount =
                 bookingCost.getCost() - finalAmount;
 
 
-        // Final amount including add-ons.
+        // Final amount including add-ons
 
         finalAmount = bookingCost.getCost();
 
 
-        // Create add-on description.
+        // Create add-on description
 
         String addOns = "";
 
@@ -925,7 +944,7 @@ public class BookingService {
             }
 
 
-            // Create Booking with add-on information.
+            // Create Booking with username and add-on information
 
             Booking booking = new Booking(
                     bookingID,
@@ -935,7 +954,8 @@ public class BookingService {
                     discountAmount,
                     addOnAmount,
                     addOns,
-                    finalAmount
+                    finalAmount,
+                    username
             );
 
 
@@ -994,7 +1014,7 @@ public class BookingService {
 
         } catch (RuntimeException e) {
 
-            // Rollback reserved seats if booking fails.
+            // Rollback reserved seats if booking fails
 
             for (Seat seat : reservedSeats) {
 
@@ -1067,6 +1087,37 @@ public class BookingService {
     }
 
 
+    // NEW: Retrieve bookings belonging to a specific user
+
+    public ArrayList<Booking> getBookingsForUser(
+            String username) {
+
+        ArrayList<Booking> userBookings =
+                new ArrayList<>();
+
+        if (username == null) {
+
+            return userBookings;
+
+        }
+
+        for (Booking booking : bookings) {
+
+            if (booking.getUsername() != null
+                    && booking.getUsername()
+                    .equalsIgnoreCase(username)) {
+
+                userBookings.add(booking);
+
+            }
+
+        }
+
+        return userBookings;
+
+    }
+
+
     // =========================================================
     // TICKET RETRIEVAL
     // =========================================================
@@ -1074,6 +1125,39 @@ public class BookingService {
     public ArrayList<Ticket> getTickets() {
 
         return new ArrayList<>(tickets);
+
+    }
+
+
+    // NEW: Retrieve tickets belonging to a specific user
+
+    public ArrayList<Ticket> getTicketsForUser(
+            String username) {
+
+        ArrayList<Ticket> userTickets =
+                new ArrayList<>();
+
+        if (username == null) {
+
+            return userTickets;
+
+        }
+
+        for (Ticket ticket : tickets) {
+
+            Booking booking = ticket.getBooking();
+
+            if (booking.getUsername() != null
+                    && booking.getUsername()
+                    .equalsIgnoreCase(username)) {
+
+                userTickets.add(ticket);
+
+            }
+
+        }
+
+        return userTickets;
 
     }
 

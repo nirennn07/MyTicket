@@ -1,3 +1,4 @@
+
 package com.myticket.view;
 
 import com.myticket.model.Movie;
@@ -12,6 +13,7 @@ public class MainFrame extends JFrame {
     private BookingService bookingService;
 
     private boolean admin;
+    private String username;
 
     private CardLayout cardLayout;
     private JPanel contentPanel;
@@ -23,12 +25,31 @@ public class MainFrame extends JFrame {
     private ScheduleSelectionPanel scheduleSelectionPanel;
     private SeatSelectionPanel seatSelectionPanel;
 
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
+
+    // Original constructor retained for compatibility
     public MainFrame(
             BookingService bookingService,
             boolean admin) {
 
+        this(
+                bookingService,
+                admin,
+                "Unknown"
+        );
+    }
+
+    // New constructor with username
+    public MainFrame(
+            BookingService bookingService,
+            boolean admin,
+            String username) {
+
         this.bookingService = bookingService;
         this.admin = admin;
+        this.username = username;
 
         setTitle("MyTicket");
         setSize(900, 600);
@@ -37,6 +58,10 @@ public class MainFrame extends JFrame {
 
         initializeComponents();
     }
+
+    // ==============================
+    // INITIALIZE COMPONENTS
+    // ==============================
 
     private void initializeComponents() {
 
@@ -159,24 +184,35 @@ public class MainFrame extends JFrame {
 
         contentPanel = new JPanel(cardLayout);
 
-        // Movie Panel
+        // ==============================
+        // MOVIE PANEL
+        // ==============================
 
         moviePanel = new MoviePanel(
                 bookingService,
                 this::showScheduleSelection
         );
 
-        // Ticket Panel
+        // ==============================
+        // TICKET PANEL
+        // ==============================
 
         ticketPanel = new TicketPanel(
-                bookingService
+                bookingService,
+                username
         );
 
-        // Admin Panel
+        // ==============================
+        // ADMIN PANEL
+        // ==============================
 
         adminPanel = new AdminPanel(
                 bookingService
         );
+
+        // ==============================
+        // ADD PANELS
+        // ==============================
 
         contentPanel.add(
                 moviePanel,
@@ -266,6 +302,7 @@ public class MainFrame extends JFrame {
     public void showScheduleSelection(Movie movie) {
 
         // Remove previous schedule panel
+
         if (scheduleSelectionPanel != null) {
 
             contentPanel.remove(
@@ -317,6 +354,7 @@ public class MainFrame extends JFrame {
     public void showSeatSelection(Schedule schedule) {
 
         // Remove previous seat selection panel
+
         if (seatSelectionPanel != null) {
 
             contentPanel.remove(
@@ -328,6 +366,7 @@ public class MainFrame extends JFrame {
                 new SeatSelectionPanel(
                         bookingService,
                         schedule,
+                        username,
 
                         // Booking completed
                         () -> {

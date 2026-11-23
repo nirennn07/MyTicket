@@ -95,6 +95,12 @@ public class Ticket {
         return booking.getSchedule().getTime();
     }
 
+    // QR Code Content
+
+    public String getQRCodeContent() {
+        return ticketID;
+    }
+
     // Setters
 
     public void setTicketID(String ticketID) {

@@ -3,9 +3,11 @@ package com.myticket.view;
 import com.myticket.model.Ticket;
 import com.myticket.model.Booking;
 import com.myticket.service.BookingService;
+import com.myticket.util.QRCodeGenerator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class TicketPanel extends JPanel {
@@ -17,6 +19,8 @@ public class TicketPanel extends JPanel {
     private JList<Ticket> ticketList;
 
     private JTextArea ticketDetailsArea;
+
+    private JLabel qrCodeLabel;
 
     public TicketPanel(BookingService bookingService) {
 
@@ -93,6 +97,63 @@ public class TicketPanel extends JPanel {
                 new JScrollPane(ticketDetailsArea);
 
         // ==============================
+        // QR CODE DISPLAY
+        // ==============================
+
+        qrCodeLabel = new JLabel();
+
+        qrCodeLabel.setHorizontalAlignment(
+                SwingConstants.CENTER
+        );
+
+        JLabel qrTitleLabel = new JLabel(
+                "Ticket QR Code",
+                SwingConstants.CENTER
+        );
+
+        qrTitleLabel.setFont(
+                new Font("Arial", Font.BOLD, 16)
+        );
+
+        JPanel qrPanel = new JPanel(
+                new BorderLayout(5, 5)
+        );
+
+        qrPanel.add(
+                qrTitleLabel,
+                BorderLayout.NORTH
+        );
+
+        qrPanel.add(
+                qrCodeLabel,
+                BorderLayout.CENTER
+        );
+
+        qrPanel.setBorder(
+                BorderFactory.createEmptyBorder(
+                        10, 10, 10, 10
+                )
+        );
+
+        // ==============================
+        // DETAILS PANEL
+        // ==============================
+
+        JPanel detailsPanel = new JPanel(
+                new BorderLayout(5, 5)
+        );
+
+        detailsPanel.add(
+                detailsScrollPane,
+                BorderLayout.CENTER
+        );
+
+        detailsPanel.add(
+                qrPanel,
+                BorderLayout.SOUTH
+        );
+
+        // ==============================
         // CENTER PANEL
         // ==============================
 
@@ -106,11 +167,14 @@ public class TicketPanel extends JPanel {
         );
 
         centerPanel.add(
-                detailsScrollPane,
+                detailsPanel,
                 BorderLayout.CENTER
         );
 
-        add(centerPanel, BorderLayout.CENTER);
+        add(
+                centerPanel,
+                BorderLayout.CENTER
+        );
 
         // ==============================
         // ACTIONS
@@ -131,13 +195,18 @@ public class TicketPanel extends JPanel {
     }
 
     /**
-     * Displays the details of a selected ticket.
+     * Displays the details and QR code
+     * of a selected ticket.
      */
     private void displayTicketDetails(Ticket ticket) {
 
         if (ticket == null) {
 
             ticketDetailsArea.setText("");
+
+            qrCodeLabel.setIcon(null);
+
+            qrCodeLabel.setText("");
 
             return;
         }
@@ -153,6 +222,10 @@ public class TicketPanel extends JPanel {
         if (addOns == null || addOns.isBlank()) {
             addOns = "None";
         }
+
+        // ==============================
+        // TICKET INFORMATION
+        // ==============================
 
         ticketDetailsArea.setText(
 
@@ -242,6 +315,42 @@ public class TicketPanel extends JPanel {
                         booking.getFinalAmount()
                 )
         );
+
+        // ==============================
+        // GENERATE QR CODE
+        // ==============================
+
+        try {
+
+            BufferedImage qrImage =
+                    QRCodeGenerator.generateQRCode(
+                            ticket.getQRCodeContent(),
+                            200,
+                            200
+                    );
+
+            qrCodeLabel.setIcon(
+                    new ImageIcon(qrImage)
+            );
+
+            qrCodeLabel.setText("");
+
+        } catch (Exception e) {
+
+            qrCodeLabel.setIcon(null);
+
+            qrCodeLabel.setText(
+                    "Unable to generate QR code."
+            );
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Failed to generate ticket QR code.\n"
+                            + e.getMessage(),
+                    "QR Code Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
     }
 
     /**
@@ -262,6 +371,10 @@ public class TicketPanel extends JPanel {
             }
 
             ticketDetailsArea.setText("");
+
+            qrCodeLabel.setIcon(null);
+
+            qrCodeLabel.setText("");
 
         } catch (Exception e) {
 

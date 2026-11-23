@@ -2,25 +2,19 @@
 classDiagram
     class Account {
         -userID
-        -name
-        -email
+        -userName
         -password
         +login()
         +logout()
     }
-
-    class Organizer {
+    
+    class Admin {
         +addMovie()
         +editMovie()
         +removeMovie()
         +manageSchedule()
-    }
-
-    class Admin {
-        +manageUsers()
         +manageReservations()
         +viewDashboard()
-        +generateReports()
     }
 
     class User {
@@ -33,20 +27,12 @@ classDiagram
         -movieID
         -title
         -genre
-        -cast
         -description
     }
 
     class Schedule {
-        -scheduleID
         -date
         -time
-    }
-
-    class Cinema {
-        -cinemaID
-        -cinemaName
-        -capacity
     }
 
     class Seat {
@@ -76,11 +62,7 @@ classDiagram
     }
 
     class Payment {
-        -paymentID
         -amount
-        -paymentMethod
-        -paymentStatus
-        +processPayment()
     }
 
     %% Inheritance relationships

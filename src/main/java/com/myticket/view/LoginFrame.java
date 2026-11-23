@@ -26,15 +26,21 @@ public class LoginFrame extends JFrame {
         setResizable(false);
 
         initializeComponents();
-
     }
+
+    // ==============================
+    // INITIALIZE COMPONENTS
+    // ==============================
 
     private void initializeComponents() {
 
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(
-                20, 30, 20, 30
-        ));
+
+        mainPanel.setBorder(
+                BorderFactory.createEmptyBorder(
+                        20, 30, 20, 30
+                )
+        );
 
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -58,41 +64,52 @@ public class LoginFrame extends JFrame {
 
         gbc.gridwidth = 1;
 
-        // Username
+        // ==============================
+        // USERNAME
+        // ==============================
 
-        JLabel usernameLabel = new JLabel("Username:");
+        JLabel usernameLabel =
+                new JLabel("Username:");
 
         gbc.gridx = 0;
         gbc.gridy = 1;
 
         mainPanel.add(usernameLabel, gbc);
 
-        usernameField = new JTextField(15);
+        usernameField =
+                new JTextField(15);
 
         gbc.gridx = 1;
         gbc.gridy = 1;
 
         mainPanel.add(usernameField, gbc);
 
-        // Password
+        // ==============================
+        // PASSWORD
+        // ==============================
 
-        JLabel passwordLabel = new JLabel("Password:");
+        JLabel passwordLabel =
+                new JLabel("Password:");
 
         gbc.gridx = 0;
         gbc.gridy = 2;
 
         mainPanel.add(passwordLabel, gbc);
 
-        passwordField = new JPasswordField(15);
+        passwordField =
+                new JPasswordField(15);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
 
         mainPanel.add(passwordField, gbc);
 
-        // Login Button
+        // ==============================
+        // LOGIN BUTTON
+        // ==============================
 
-        loginButton = new JButton("Login");
+        loginButton =
+                new JButton("Login");
 
         gbc.gridx = 0;
         gbc.gridy = 3;
@@ -100,19 +117,26 @@ public class LoginFrame extends JFrame {
 
         mainPanel.add(loginButton, gbc);
 
-        loginButton.addActionListener(this::handleLogin);
+        loginButton.addActionListener(
+                this::handleLogin
+        );
 
         add(mainPanel);
-
     }
+
+    // ==============================
+    // LOGIN
+    // ==============================
 
     private void handleLogin(ActionEvent e) {
 
-        String username = usernameField.getText().trim();
+        String username =
+                usernameField.getText().trim();
 
-        String password = new String(
-                passwordField.getPassword()
-        );
+        String password =
+                new String(
+                        passwordField.getPassword()
+                );
 
         if (username.isEmpty() || password.isEmpty()) {
 
@@ -124,10 +148,11 @@ public class LoginFrame extends JFrame {
             );
 
             return;
-
         }
 
-        // Simulated login credentials
+        // ==============================
+        // SIMULATED LOGIN CREDENTIALS
+        // ==============================
 
         boolean isCustomer =
                 username.equals("user")
@@ -137,12 +162,18 @@ public class LoginFrame extends JFrame {
                 username.equals("admin")
                         && password.equals("admin");
 
+        // ==============================
+        // SUCCESSFUL LOGIN
+        // ==============================
+
         if (isCustomer || isAdmin) {
 
-            MainFrame mainFrame = new MainFrame(
-                    bookingService,
-                    isAdmin
-            );
+            MainFrame mainFrame =
+                    new MainFrame(
+                            bookingService,
+                            isAdmin,
+                            username
+                    );
 
             mainFrame.setVisible(true);
 
@@ -156,9 +187,6 @@ public class LoginFrame extends JFrame {
                     "Login Failed",
                     JOptionPane.ERROR_MESSAGE
             );
-
         }
-
     }
-
 }

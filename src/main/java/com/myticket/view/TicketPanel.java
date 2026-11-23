@@ -1,3 +1,4 @@
+
 package com.myticket.view;
 
 import com.myticket.model.Ticket;
@@ -14,6 +15,8 @@ public class TicketPanel extends JPanel {
 
     private BookingService bookingService;
 
+    private String username;
+
     private DefaultListModel<Ticket> ticketListModel;
 
     private JList<Ticket> ticketList;
@@ -22,9 +25,20 @@ public class TicketPanel extends JPanel {
 
     private JLabel qrCodeLabel;
 
+    // =====================================
+    // CONSTRUCTOR
+    // =====================================
+
+    // Old constructor for compatibility
     public TicketPanel(BookingService bookingService) {
+        this(bookingService, "Unknown");
+    }
+
+    // New constructor with username
+    public TicketPanel(BookingService bookingService, String username) {
 
         this.bookingService = bookingService;
+        this.username = username;
 
         setLayout(new BorderLayout(10, 10));
 
@@ -32,6 +46,10 @@ public class TicketPanel extends JPanel {
 
         refreshTickets();
     }
+
+    // =====================================
+    // INITIALIZE COMPONENTS
+    // =====================================
 
     private void initializeComponents() {
 
@@ -194,6 +212,10 @@ public class TicketPanel extends JPanel {
         });
     }
 
+    // =====================================
+    // DISPLAY TICKET DETAILS
+    // =====================================
+
     /**
      * Displays the details and QR code
      * of a selected ticket.
@@ -353,8 +375,13 @@ public class TicketPanel extends JPanel {
         }
     }
 
+    // =====================================
+    // REFRESH TICKETS
+    // =====================================
+
     /**
-     * Refreshes the ticket list.
+     * Refreshes the ticket list
+     * for the currently logged-in user.
      */
     public void refreshTickets() {
 
@@ -363,7 +390,7 @@ public class TicketPanel extends JPanel {
             ticketListModel.clear();
 
             ArrayList<Ticket> tickets =
-                    bookingService.getTickets();
+                    bookingService.getTicketsForUser(username);
 
             for (Ticket ticket : tickets) {
 

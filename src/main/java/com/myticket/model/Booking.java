@@ -18,26 +18,66 @@ public class Booking {
     private String addOns;
     private String status;
 
-    // Original constructor preserved for compatibility
-    public Booking(String bookingID, Schedule schedule,
-                   ArrayList<Seat> selectedSeats,
-                   double totalAmount,
-                   double discountAmount,
-                   double finalAmount) {
+    // NEW: Username of the account that made the booking
+    private String username;
 
-        this(bookingID, schedule, selectedSeats,
-                totalAmount, discountAmount,
-                0.0, "None", finalAmount);
+    // Original constructor preserved for compatibility
+    public Booking(
+            String bookingID,
+            Schedule schedule,
+            ArrayList<Seat> selectedSeats,
+            double totalAmount,
+            double discountAmount,
+            double finalAmount) {
+
+        this(
+                bookingID,
+                schedule,
+                selectedSeats,
+                totalAmount,
+                discountAmount,
+                0.0,
+                "None",
+                finalAmount,
+                "Unknown"
+        );
     }
 
-    // Revised constructor with add-ons
-    public Booking(String bookingID, Schedule schedule,
-                   ArrayList<Seat> selectedSeats,
-                   double totalAmount,
-                   double discountAmount,
-                   double addOnAmount,
-                   String addOns,
-                   double finalAmount) {
+    // Constructor with add-ons preserved for compatibility
+    public Booking(
+            String bookingID,
+            Schedule schedule,
+            ArrayList<Seat> selectedSeats,
+            double totalAmount,
+            double discountAmount,
+            double addOnAmount,
+            String addOns,
+            double finalAmount) {
+
+        this(
+                bookingID,
+                schedule,
+                selectedSeats,
+                totalAmount,
+                discountAmount,
+                addOnAmount,
+                addOns,
+                finalAmount,
+                "Unknown"
+        );
+    }
+
+    // NEW: Constructor with username
+    public Booking(
+            String bookingID,
+            Schedule schedule,
+            ArrayList<Seat> selectedSeats,
+            double totalAmount,
+            double discountAmount,
+            double addOnAmount,
+            String addOns,
+            double finalAmount,
+            String username) {
 
         this.bookingID = bookingID;
         this.schedule = schedule;
@@ -49,6 +89,8 @@ public class Booking {
         this.addOnAmount = addOnAmount;
         this.addOns = addOns;
         this.finalAmount = finalAmount;
+
+        this.username = username;
 
         this.status = "CONFIRMED";
     }
@@ -95,6 +137,11 @@ public class Booking {
         return status;
     }
 
+    // NEW: Get booking owner
+    public String getUsername() {
+        return username;
+    }
+
     // Setters
 
     public void setTotalAmount(double totalAmount) {
@@ -121,6 +168,18 @@ public class Booking {
         this.status = status;
     }
 
+    // NEW: Set booking owner
+    public void setUsername(String username) {
+
+        if (username == null || username.trim().isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Username cannot be empty."
+            );
+        }
+
+        this.username = username;
+    }
+
     // Cancel booking
     public void cancelBooking() {
         this.status = "CANCELLED";
@@ -128,9 +187,12 @@ public class Booking {
 
     @Override
     public String toString() {
+
         return "Booking ID: " + bookingID
+                + "\nUsername: " + username
                 + "\nMovie: " + schedule.getMovie().getTitle()
-                + "\nSchedule: " + schedule.getDate() + " " + schedule.getTime()
+                + "\nSchedule: " + schedule.getDate()
+                + " " + schedule.getTime()
                 + "\nSeats: " + selectedSeats
                 + "\nTicket Total: ₱" + totalAmount
                 + "\nDiscount: ₱" + discountAmount

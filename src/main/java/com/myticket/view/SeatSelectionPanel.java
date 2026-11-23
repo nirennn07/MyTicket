@@ -23,6 +23,7 @@ public class SeatSelectionPanel extends JPanel {
 
     private BookingService bookingService;
     private Schedule schedule;
+    private String username;
 
     private Runnable bookingCompleteCallback;
     private Runnable backCallback;
@@ -51,14 +52,37 @@ public class SeatSelectionPanel extends JPanel {
     private static final Color SENIOR_COLOR =
             new Color(52, 152, 219);
 
+    // =========================
+    // CONSTRUCTORS
+    // =========================
+
+    // Original constructor retained for compatibility
     public SeatSelectionPanel(
             BookingService bookingService,
             Schedule schedule,
             Runnable bookingCompleteCallback,
             Runnable backCallback) {
 
+        this(
+                bookingService,
+                schedule,
+                "Unknown",
+                bookingCompleteCallback,
+                backCallback
+        );
+    }
+
+    // New constructor with username
+    public SeatSelectionPanel(
+            BookingService bookingService,
+            Schedule schedule,
+            String username,
+            Runnable bookingCompleteCallback,
+            Runnable backCallback) {
+
         this.bookingService = bookingService;
         this.schedule = schedule;
+        this.username = username;
         this.bookingCompleteCallback = bookingCompleteCallback;
         this.backCallback = backCallback;
 
@@ -67,6 +91,10 @@ public class SeatSelectionPanel extends JPanel {
 
         initializePanel();
     }
+
+    // =========================
+    // INITIALIZE PANEL
+    // =========================
 
     private void initializePanel() {
 
@@ -645,7 +673,8 @@ public class SeatSelectionPanel extends JPanel {
                             ticketTypes,
                             popcornCheckBox.isSelected(),
                             drinkCheckBox.isSelected(),
-                            snackCheckBox.isSelected()
+                            snackCheckBox.isSelected(),
+                            username
                     );
 
             // =========================
@@ -703,6 +732,7 @@ public class SeatSelectionPanel extends JPanel {
             );
 
             // Clear selections
+
             selectedSeats.clear();
             seniorCitizenSeats.clear();
 
@@ -711,11 +741,13 @@ public class SeatSelectionPanel extends JPanel {
             snackCheckBox.setSelected(false);
 
             // Update UI
+
             refreshSeats();
             updateSelectedSeatsPanel();
             updateTotal();
 
             // Callback
+
             if (
                     bookingCompleteCallback != null
             ) {

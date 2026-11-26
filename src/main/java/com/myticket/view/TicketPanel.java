@@ -1,4 +1,3 @@
-
 package com.myticket.view;
 
 import com.myticket.model.Ticket;
@@ -7,6 +6,7 @@ import com.myticket.service.BookingService;
 import com.myticket.util.QRCodeGenerator;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -41,6 +41,8 @@ public class TicketPanel extends JPanel {
         this.username = username;
 
         setLayout(new BorderLayout(10, 10));
+        setBackground(BlueTheme.APP_BG);
+        setBorder(new EmptyBorder(15, 15, 15, 15));
 
         initializeComponents();
 
@@ -57,16 +59,20 @@ public class TicketPanel extends JPanel {
         // TITLE
         // ==============================
 
+        JPanel topHeader = new JPanel(new BorderLayout());
+        topHeader.setBackground(BlueTheme.CARD_BG);
+        topHeader.setBorder(BlueTheme.createCardBorder());
+
         JLabel titleLabel = new JLabel(
                 "My Tickets",
                 SwingConstants.CENTER
         );
 
-        titleLabel.setFont(
-                new Font("Arial", Font.BOLD, 24)
-        );
+        titleLabel.setFont(BlueTheme.FONT_TITLE);
+        titleLabel.setForeground(BlueTheme.NAVY);
 
-        add(titleLabel, BorderLayout.NORTH);
+        topHeader.add(titleLabel, BorderLayout.CENTER);
+        add(topHeader, BorderLayout.NORTH);
 
         // ==============================
         // TICKET LIST
@@ -77,6 +83,7 @@ public class TicketPanel extends JPanel {
         ticketList = new JList<>(
                 ticketListModel
         );
+        BlueTheme.styleList(ticketList);
 
         ticketList.setSelectionMode(
                 ListSelectionModel.SINGLE_SELECTION
@@ -84,16 +91,23 @@ public class TicketPanel extends JPanel {
 
         JScrollPane ticketScrollPane =
                 new JScrollPane(ticketList);
+        BlueTheme.styleScrollPane(ticketScrollPane);
 
         ticketScrollPane.setPreferredSize(
                 new Dimension(250, 400)
         );
+
+        JPanel listPanel = new JPanel(new BorderLayout());
+        listPanel.setBackground(BlueTheme.CARD_BG);
+        listPanel.setBorder(BlueTheme.createBlueTitledBorder("Your Tickets"));
+        listPanel.add(ticketScrollPane, BorderLayout.CENTER);
 
         // ==============================
         // TICKET DETAILS
         // ==============================
 
         ticketDetailsArea = new JTextArea();
+        BlueTheme.styleTextArea(ticketDetailsArea);
 
         ticketDetailsArea.setEditable(false);
 
@@ -102,7 +116,7 @@ public class TicketPanel extends JPanel {
         ticketDetailsArea.setWrapStyleWord(true);
 
         ticketDetailsArea.setFont(
-                new Font("Arial", Font.PLAIN, 15)
+                new Font("Segoe UI", Font.PLAIN, 15)
         );
 
         ticketDetailsArea.setBorder(
@@ -113,6 +127,7 @@ public class TicketPanel extends JPanel {
 
         JScrollPane detailsScrollPane =
                 new JScrollPane(ticketDetailsArea);
+        BlueTheme.styleScrollPane(detailsScrollPane);
 
         // ==============================
         // QR CODE DISPLAY
@@ -130,12 +145,14 @@ public class TicketPanel extends JPanel {
         );
 
         qrTitleLabel.setFont(
-                new Font("Arial", Font.BOLD, 16)
+                new Font("Segoe UI", Font.BOLD, 16)
         );
+        qrTitleLabel.setForeground(BlueTheme.NAVY);
 
         JPanel qrPanel = new JPanel(
                 new BorderLayout(5, 5)
         );
+        qrPanel.setBackground(BlueTheme.SOFT_ICE);
 
         qrPanel.add(
                 qrTitleLabel,
@@ -148,8 +165,9 @@ public class TicketPanel extends JPanel {
         );
 
         qrPanel.setBorder(
-                BorderFactory.createEmptyBorder(
-                        10, 10, 10, 10
+                BorderFactory.createCompoundBorder(
+                        new javax.swing.border.LineBorder(BlueTheme.BORDER_BLUE, 1, true),
+                        new EmptyBorder(10, 10, 10, 10)
                 )
         );
 
@@ -158,8 +176,10 @@ public class TicketPanel extends JPanel {
         // ==============================
 
         JPanel detailsPanel = new JPanel(
-                new BorderLayout(5, 5)
+                new BorderLayout(8, 8)
         );
+        detailsPanel.setBackground(BlueTheme.CARD_BG);
+        detailsPanel.setBorder(BlueTheme.createBlueTitledBorder("Ticket & Booking Summary"));
 
         detailsPanel.add(
                 detailsScrollPane,
@@ -178,9 +198,10 @@ public class TicketPanel extends JPanel {
         JPanel centerPanel = new JPanel(
                 new BorderLayout(10, 10)
         );
+        centerPanel.setBackground(BlueTheme.APP_BG);
 
         centerPanel.add(
-                ticketScrollPane,
+                listPanel,
                 BorderLayout.WEST
         );
 
@@ -216,10 +237,6 @@ public class TicketPanel extends JPanel {
     // DISPLAY TICKET DETAILS
     // =====================================
 
-    /**
-     * Displays the details and QR code
-     * of a selected ticket.
-     */
     private void displayTicketDetails(Ticket ticket) {
 
         if (ticket == null) {
@@ -379,10 +396,6 @@ public class TicketPanel extends JPanel {
     // REFRESH TICKETS
     // =====================================
 
-    /**
-     * Refreshes the ticket list
-     * for the currently logged-in user.
-     */
     public void refreshTickets() {
 
         try {

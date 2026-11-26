@@ -1,4 +1,3 @@
-
 package com.myticket.view;
 
 import com.myticket.model.Movie;
@@ -6,6 +5,7 @@ import com.myticket.model.Schedule;
 import com.myticket.service.BookingService;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.function.Consumer;
@@ -41,6 +41,8 @@ public class ScheduleSelectionPanel extends JPanel {
         this.onBack = onBack;
 
         setLayout(new BorderLayout(10, 10));
+        setBackground(BlueTheme.APP_BG);
+        setBorder(new EmptyBorder(15, 15, 15, 15));
 
         initializeComponents();
 
@@ -55,30 +57,31 @@ public class ScheduleSelectionPanel extends JPanel {
         // ==============================
 
         JPanel headerPanel = new JPanel(
-                new BorderLayout()
+                new BorderLayout(10, 0)
         );
+        headerPanel.setBackground(BlueTheme.CARD_BG);
+        headerPanel.setBorder(BlueTheme.createCardBorder());
 
         JLabel titleLabel = new JLabel(
                 "Select a Schedule",
                 SwingConstants.CENTER
         );
 
-        titleLabel.setFont(
-                new Font("Arial", Font.BOLD, 24)
-        );
+        titleLabel.setFont(BlueTheme.FONT_TITLE);
+        titleLabel.setForeground(BlueTheme.NAVY);
 
         JLabel movieLabel = new JLabel(
                 movie.getTitle(),
                 SwingConstants.CENTER
         );
 
-        movieLabel.setFont(
-                new Font("Arial", Font.PLAIN, 18)
-        );
+        movieLabel.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+        movieLabel.setForeground(BlueTheme.ROYAL_BLUE);
 
         JPanel titlePanel = new JPanel(
                 new GridLayout(2, 1)
         );
+        titlePanel.setBackground(BlueTheme.CARD_BG);
 
         titlePanel.add(titleLabel);
 
@@ -87,6 +90,7 @@ public class ScheduleSelectionPanel extends JPanel {
         JButton backButton = new JButton(
                 "Back to Movies"
         );
+        BlueTheme.styleSecondaryButton(backButton);
 
         headerPanel.add(
                 backButton,
@@ -109,28 +113,36 @@ public class ScheduleSelectionPanel extends JPanel {
         scheduleList = new JList<>(
                 scheduleListModel
         );
+        BlueTheme.styleList(scheduleList);
 
         scheduleList.setSelectionMode(
                 ListSelectionModel.SINGLE_SELECTION
         );
 
         scheduleList.setFont(
-                new Font("Arial", Font.PLAIN, 16)
+                new Font("Segoe UI", Font.PLAIN, 15)
         );
 
         JScrollPane scheduleScrollPane = new JScrollPane(
                 scheduleList
         );
+        BlueTheme.styleScrollPane(scheduleScrollPane);
 
         scheduleScrollPane.setPreferredSize(
                 new Dimension(300, 400)
         );
+
+        JPanel listContainer = new JPanel(new BorderLayout());
+        listContainer.setBackground(BlueTheme.CARD_BG);
+        listContainer.setBorder(BlueTheme.createBlueTitledBorder("Schedules"));
+        listContainer.add(scheduleScrollPane, BorderLayout.CENTER);
 
         // ==============================
         // SCHEDULE DETAILS
         // ==============================
 
         scheduleDetailsArea = new JTextArea();
+        BlueTheme.styleTextArea(scheduleDetailsArea);
 
         scheduleDetailsArea.setEditable(false);
 
@@ -139,7 +151,7 @@ public class ScheduleSelectionPanel extends JPanel {
         scheduleDetailsArea.setWrapStyleWord(true);
 
         scheduleDetailsArea.setFont(
-                new Font("Arial", Font.PLAIN, 15)
+                new Font("Segoe UI", Font.PLAIN, 15)
         );
 
         scheduleDetailsArea.setBorder(
@@ -151,6 +163,12 @@ public class ScheduleSelectionPanel extends JPanel {
         JScrollPane detailsScrollPane = new JScrollPane(
                 scheduleDetailsArea
         );
+        BlueTheme.styleScrollPane(detailsScrollPane);
+
+        JPanel detailsContainer = new JPanel(new BorderLayout());
+        detailsContainer.setBackground(BlueTheme.CARD_BG);
+        detailsContainer.setBorder(BlueTheme.createBlueTitledBorder("Schedule Details"));
+        detailsContainer.add(detailsScrollPane, BorderLayout.CENTER);
 
         // ==============================
         // CENTER PANEL
@@ -159,14 +177,15 @@ public class ScheduleSelectionPanel extends JPanel {
         JPanel centerPanel = new JPanel(
                 new BorderLayout(10, 10)
         );
+        centerPanel.setBackground(BlueTheme.APP_BG);
 
         centerPanel.add(
-                scheduleScrollPane,
+                listContainer,
                 BorderLayout.WEST
         );
 
         centerPanel.add(
-                detailsScrollPane,
+                detailsContainer,
                 BorderLayout.CENTER
         );
 
@@ -179,8 +198,10 @@ public class ScheduleSelectionPanel extends JPanel {
         JButton selectScheduleButton = new JButton(
                 "Select Schedule"
         );
+        BlueTheme.stylePrimaryButton(selectScheduleButton);
 
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(BlueTheme.APP_BG);
 
         buttonPanel.add(selectScheduleButton);
 

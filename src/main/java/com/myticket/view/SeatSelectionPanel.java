@@ -14,6 +14,7 @@ import com.myticket.decorator.SnackDecorator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,7 +51,7 @@ public class SeatSelectionPanel extends JPanel {
             new Color(231, 76, 60);
 
     private static final Color SENIOR_COLOR =
-            new Color(52, 152, 219);
+            new Color(37, 99, 235);
 
     // =========================
     // CONSTRUCTORS
@@ -99,15 +100,19 @@ public class SeatSelectionPanel extends JPanel {
     private void initializePanel() {
 
         setLayout(new BorderLayout(15, 15));
+        setBackground(BlueTheme.APP_BG);
         setBorder(new EmptyBorder(20, 20, 20, 20));
 
         // =========================
         // TOP PANEL
         // =========================
 
-        JPanel topPanel = new JPanel(new BorderLayout());
+        JPanel topPanel = new JPanel(new BorderLayout(12, 0));
+        topPanel.setBackground(BlueTheme.CARD_BG);
+        topPanel.setBorder(BlueTheme.createCardBorder());
 
         JButton backButton = new JButton("← Back");
+        BlueTheme.styleSecondaryButton(backButton);
 
         backButton.addActionListener(e -> {
             if (backCallback != null) {
@@ -116,7 +121,8 @@ public class SeatSelectionPanel extends JPanel {
         });
 
         JLabel titleLabel = new JLabel("Select Your Seats");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setFont(BlueTheme.FONT_TITLE);
+        titleLabel.setForeground(BlueTheme.NAVY);
 
         topPanel.add(backButton, BorderLayout.WEST);
         topPanel.add(titleLabel, BorderLayout.CENTER);
@@ -128,19 +134,23 @@ public class SeatSelectionPanel extends JPanel {
         // =========================
 
         JPanel centerPanel = new JPanel(new BorderLayout(15, 15));
+        centerPanel.setBackground(BlueTheme.CARD_BG);
+        centerPanel.setBorder(BlueTheme.createCardBorder());
 
         JLabel screenLabel = new JLabel(
                 "SCREEN",
                 SwingConstants.CENTER
         );
 
-        screenLabel.setFont(
-                new Font("Arial", Font.BOLD, 18)
-        );
+        screenLabel.setOpaque(true);
+        screenLabel.setBackground(BlueTheme.NAVY);
+        screenLabel.setForeground(Color.WHITE);
+        screenLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
 
         screenLabel.setBorder(
-                BorderFactory.createEmptyBorder(
-                        10, 10, 20, 10
+                BorderFactory.createCompoundBorder(
+                        new LineBorder(BlueTheme.ROYAL_BLUE, 1, true),
+                        new EmptyBorder(10, 10, 10, 10)
                 )
         );
 
@@ -149,6 +159,7 @@ public class SeatSelectionPanel extends JPanel {
         seatsPanel = new JPanel(
                 new GridLayout(0, 5, 10, 10)
         );
+        seatsPanel.setBackground(BlueTheme.SOFT_ICE);
 
         seatsPanel.setBorder(
                 new EmptyBorder(20, 20, 20, 20)
@@ -165,6 +176,7 @@ public class SeatSelectionPanel extends JPanel {
         JPanel legendPanel = new JPanel(
                 new FlowLayout()
         );
+        legendPanel.setBackground(BlueTheme.CARD_BG);
 
         legendPanel.add(
                 createLegendItem(
@@ -206,6 +218,7 @@ public class SeatSelectionPanel extends JPanel {
         // =========================
 
         JPanel rightPanel = new JPanel();
+        rightPanel.setBackground(BlueTheme.CARD_BG);
 
         rightPanel.setLayout(
                 new BoxLayout(
@@ -215,8 +228,9 @@ public class SeatSelectionPanel extends JPanel {
         );
 
         rightPanel.setBorder(
-                new EmptyBorder(
-                        10, 20, 10, 20
+                BorderFactory.createCompoundBorder(
+                        BlueTheme.createCardBorder(),
+                        new EmptyBorder(6, 10, 6, 10)
                 )
         );
 
@@ -229,11 +243,12 @@ public class SeatSelectionPanel extends JPanel {
 
         selectedSeatsTitle.setFont(
                 new Font(
-                        "Arial",
+                        "Segoe UI",
                         Font.BOLD,
-                        18
+                        17
                 )
         );
+        selectedSeatsTitle.setForeground(BlueTheme.NAVY);
 
         rightPanel.add(selectedSeatsTitle);
 
@@ -242,6 +257,7 @@ public class SeatSelectionPanel extends JPanel {
         );
 
         selectedSeatsPanel = new JPanel();
+        selectedSeatsPanel.setBackground(BlueTheme.CARD_BG);
 
         selectedSeatsPanel.setLayout(
                 new BoxLayout(
@@ -265,11 +281,12 @@ public class SeatSelectionPanel extends JPanel {
 
         addOnsTitle.setFont(
                 new Font(
-                        "Arial",
+                        "Segoe UI",
                         Font.BOLD,
-                        18
+                        17
                 )
         );
+        addOnsTitle.setForeground(BlueTheme.NAVY);
 
         popcornCheckBox =
                 new JCheckBox("Popcorn Combo - ₱150");
@@ -279,6 +296,10 @@ public class SeatSelectionPanel extends JPanel {
 
         snackCheckBox =
                 new JCheckBox("Snack - ₱100");
+
+        styleCheckBox(popcornCheckBox);
+        styleCheckBox(drinkCheckBox);
+        styleCheckBox(snackCheckBox);
 
         popcornCheckBox.addActionListener(
                 e -> updateTotal()
@@ -315,21 +336,23 @@ public class SeatSelectionPanel extends JPanel {
 
         totalTitle.setFont(
                 new Font(
-                        "Arial",
+                        "Segoe UI",
                         Font.BOLD,
-                        18
+                        17
                 )
         );
+        totalTitle.setForeground(BlueTheme.NAVY);
 
         totalLabel = new JLabel("₱0.00");
 
         totalLabel.setFont(
                 new Font(
-                        "Arial",
+                        "Segoe UI",
                         Font.BOLD,
                         24
                 )
         );
+        totalLabel.setForeground(BlueTheme.ROYAL_BLUE);
 
         rightPanel.add(totalTitle);
 
@@ -349,6 +372,7 @@ public class SeatSelectionPanel extends JPanel {
 
         JButton bookButton =
                 new JButton("Confirm Booking");
+        BlueTheme.stylePrimaryButton(bookButton);
 
         bookButton.setAlignmentX(
                 Component.CENTER_ALIGNMENT
@@ -364,6 +388,13 @@ public class SeatSelectionPanel extends JPanel {
 
         updateSelectedSeatsPanel();
         updateTotal();
+    }
+
+    private void styleCheckBox(JCheckBox checkBox) {
+        checkBox.setFont(BlueTheme.FONT_BODY);
+        checkBox.setBackground(BlueTheme.CARD_BG);
+        checkBox.setForeground(BlueTheme.TEXT_DARK);
+        checkBox.setFocusPainted(false);
     }
 
     // =========================
@@ -384,6 +415,7 @@ public class SeatSelectionPanel extends JPanel {
                             seat.getSeatNumber()
                     );
 
+            seatButton.setFont(BlueTheme.FONT_BODY_BOLD);
             seatButton.setPreferredSize(
                     new Dimension(60, 40)
             );
@@ -437,6 +469,7 @@ public class SeatSelectionPanel extends JPanel {
 
             seatButton.setOpaque(true);
             seatButton.setBorderPainted(false);
+            seatButton.setFocusPainted(false);
 
             seatButton.addActionListener(
                     e -> toggleSeatSelection(seat)
@@ -489,6 +522,8 @@ public class SeatSelectionPanel extends JPanel {
 
             JLabel emptyLabel =
                     new JLabel("No seats selected");
+            emptyLabel.setFont(BlueTheme.FONT_BODY);
+            emptyLabel.setForeground(BlueTheme.TEXT_MUTED);
 
             selectedSeatsPanel.add(emptyLabel);
 
@@ -502,16 +537,20 @@ public class SeatSelectionPanel extends JPanel {
                                         FlowLayout.LEFT
                                 )
                         );
+                seatRow.setBackground(BlueTheme.CARD_BG);
 
                 JLabel seatLabel =
                         new JLabel(
                                 seat.getSeatNumber()
                         );
+                seatLabel.setFont(BlueTheme.FONT_BODY_BOLD);
+                seatLabel.setForeground(BlueTheme.NAVY);
 
                 JCheckBox seniorCheckBox =
                         new JCheckBox(
                                 "Senior Citizen"
                         );
+                styleCheckBox(seniorCheckBox);
 
                 seniorCheckBox.setSelected(
                         seniorCitizenSeats.contains(seat)
@@ -783,6 +822,7 @@ public class SeatSelectionPanel extends JPanel {
                                 FlowLayout.LEFT
                         )
                 );
+        panel.setBackground(BlueTheme.CARD_BG);
 
         JLabel colorLabel =
                 new JLabel("  ");
@@ -797,6 +837,8 @@ public class SeatSelectionPanel extends JPanel {
 
         JLabel textLabel =
                 new JLabel(text);
+        textLabel.setFont(BlueTheme.FONT_SMALL);
+        textLabel.setForeground(BlueTheme.TEXT_DARK);
 
         panel.add(colorLabel);
         panel.add(textLabel);

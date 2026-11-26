@@ -1,4 +1,3 @@
-
 package com.myticket.view;
 
 import com.myticket.model.Movie;
@@ -6,6 +5,8 @@ import com.myticket.model.Schedule;
 import com.myticket.service.BookingService;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
@@ -66,12 +67,20 @@ public class MainFrame extends JFrame {
     private void initializeComponents() {
 
         setLayout(new BorderLayout());
+        getContentPane().setBackground(BlueTheme.APP_BG);
 
         // ==============================
         // NAVIGATION PANEL
         // ==============================
 
         JPanel navigationPanel = new JPanel();
+        navigationPanel.setBackground(BlueTheme.NAVY);
+        navigationPanel.setBorder(
+                BorderFactory.createCompoundBorder(
+                        new MatteBorder(0, 0, 0, 1, BlueTheme.DEEP_NAVY),
+                        new EmptyBorder(15, 10, 15, 10)
+                )
+        );
 
         navigationPanel.setLayout(
                 new BoxLayout(
@@ -84,20 +93,17 @@ public class MainFrame extends JFrame {
                 new Dimension(180, 600)
         );
 
-        navigationPanel.setBorder(
-                BorderFactory.createEmptyBorder(
-                        15, 10, 15, 10
-                )
-        );
-
         JButton moviesButton =
                 new JButton("Movies");
+        BlueTheme.styleNavButton(moviesButton, false);
 
         JButton ticketsButton =
                 new JButton("My Tickets");
+        BlueTheme.styleNavButton(ticketsButton, false);
 
         JButton logoutButton =
                 new JButton("Logout");
+        BlueTheme.styleNavButton(logoutButton, true);
 
         moviesButton.setMaximumSize(
                 new Dimension(
@@ -140,6 +146,7 @@ public class MainFrame extends JFrame {
 
             JButton adminButton =
                     new JButton("Admin Panel");
+            BlueTheme.styleNavButton(adminButton, false);
 
             adminButton.setMaximumSize(
                     new Dimension(
@@ -183,6 +190,7 @@ public class MainFrame extends JFrame {
         cardLayout = new CardLayout();
 
         contentPanel = new JPanel(cardLayout);
+        contentPanel.setBackground(BlueTheme.APP_BG);
 
         // ==============================
         // MOVIE PANEL

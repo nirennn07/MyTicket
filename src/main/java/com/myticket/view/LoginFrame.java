@@ -3,6 +3,7 @@ package com.myticket.view;
 import com.myticket.service.BookingService;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -20,7 +21,7 @@ public class LoginFrame extends JFrame {
         this.bookingService = bookingService;
 
         setTitle("MyTicket - Login");
-        setSize(400, 300);
+        setSize(420, 330);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -34,17 +35,22 @@ public class LoginFrame extends JFrame {
 
     private void initializeComponents() {
 
-        JPanel mainPanel = new JPanel(new GridBagLayout());
+        JPanel outerPanel = new JPanel(new GridBagLayout());
+        outerPanel.setBackground(BlueTheme.APP_BG);
+        outerPanel.setBorder(new EmptyBorder(16, 16, 16, 16));
 
+        JPanel mainPanel = new JPanel(new GridBagLayout());
+        mainPanel.setBackground(BlueTheme.CARD_BG);
         mainPanel.setBorder(
-                BorderFactory.createEmptyBorder(
-                        20, 30, 20, 30
+                BorderFactory.createCompoundBorder(
+                        BlueTheme.createCardBorder(),
+                        new EmptyBorder(10, 16, 10, 16)
                 )
         );
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(8, 8, 8, 8);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         JLabel titleLabel = new JLabel(
@@ -52,9 +58,8 @@ public class LoginFrame extends JFrame {
                 SwingConstants.CENTER
         );
 
-        titleLabel.setFont(
-                new Font("Arial", Font.BOLD, 24)
-        );
+        titleLabel.setFont(BlueTheme.FONT_TITLE);
+        titleLabel.setForeground(BlueTheme.NAVY);
 
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -70,6 +75,8 @@ public class LoginFrame extends JFrame {
 
         JLabel usernameLabel =
                 new JLabel("Username:");
+        usernameLabel.setFont(BlueTheme.FONT_BODY_BOLD);
+        usernameLabel.setForeground(BlueTheme.NAVY);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -78,6 +85,7 @@ public class LoginFrame extends JFrame {
 
         usernameField =
                 new JTextField(15);
+        BlueTheme.styleTextField(usernameField);
 
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -90,6 +98,8 @@ public class LoginFrame extends JFrame {
 
         JLabel passwordLabel =
                 new JLabel("Password:");
+        passwordLabel.setFont(BlueTheme.FONT_BODY_BOLD);
+        passwordLabel.setForeground(BlueTheme.NAVY);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -98,6 +108,7 @@ public class LoginFrame extends JFrame {
 
         passwordField =
                 new JPasswordField(15);
+        BlueTheme.styleTextField(passwordField);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -110,10 +121,12 @@ public class LoginFrame extends JFrame {
 
         loginButton =
                 new JButton("Login");
+        BlueTheme.stylePrimaryButton(loginButton);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 2;
+        gbc.insets = new Insets(14, 8, 4, 8);
 
         mainPanel.add(loginButton, gbc);
 
@@ -121,7 +134,8 @@ public class LoginFrame extends JFrame {
                 this::handleLogin
         );
 
-        add(mainPanel);
+        outerPanel.add(mainPanel);
+        add(outerPanel);
     }
 
     // ==============================

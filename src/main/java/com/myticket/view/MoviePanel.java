@@ -7,10 +7,10 @@ import com.myticket.service.BookingService;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
@@ -66,21 +66,23 @@ public class MoviePanel extends JPanel {
         movieListModel = new DefaultListModel<>();
 
         movieList = new JList<>(movieListModel);
+        BlueTheme.styleList(movieList);
 
         movieList.setSelectionMode(
                 ListSelectionModel.SINGLE_SELECTION
         );
 
-        movieList.setFont(new Font("Arial", Font.PLAIN, 16));
+        movieList.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 
         movieList.setFixedCellHeight(40);
 
         movieDetails = new JTextArea();
+        BlueTheme.styleTextArea(movieDetails);
 
         movieDetails.setEditable(false);
         movieDetails.setLineWrap(true);
         movieDetails.setWrapStyleWord(true);
-        movieDetails.setFont(new Font("Arial", Font.PLAIN, 14));
+        movieDetails.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
         movieDetails.setBorder(
                 new EmptyBorder(10, 10, 10, 10)
@@ -91,12 +93,17 @@ public class MoviePanel extends JPanel {
                 SwingConstants.CENTER
         );
 
+        posterLabel.setOpaque(true);
+        posterLabel.setBackground(BlueTheme.SOFT_ICE);
+        posterLabel.setForeground(BlueTheme.NAVY);
+        posterLabel.setFont(BlueTheme.FONT_BODY);
+
         posterLabel.setPreferredSize(
                 new Dimension(250, 350)
         );
 
         posterLabel.setBorder(
-                BorderFactory.createLineBorder(Color.GRAY)
+                new LineBorder(BlueTheme.BORDER_BLUE, 1, true)
         );
 
         posterLabel.setCursor(
@@ -104,6 +111,7 @@ public class MoviePanel extends JPanel {
         );
 
         selectMovieButton = new JButton("Select Movie");
+        BlueTheme.stylePrimaryButton(selectMovieButton);
 
         selectMovieButton.setEnabled(false);
     }
@@ -115,6 +123,7 @@ public class MoviePanel extends JPanel {
     private void setupLayout() {
 
         setLayout(new BorderLayout(15, 15));
+        setBackground(BlueTheme.APP_BG);
 
         setBorder(
                 new EmptyBorder(15, 15, 15, 15)
@@ -123,13 +132,17 @@ public class MoviePanel extends JPanel {
         // Movie list panel
 
         JPanel movieListPanel = new JPanel(new BorderLayout());
+        movieListPanel.setBackground(BlueTheme.CARD_BG);
 
         movieListPanel.setBorder(
-                BorderFactory.createTitledBorder("Available Movies")
+                BlueTheme.createBlueTitledBorder("Available Movies")
         );
 
+        JScrollPane listScroll = new JScrollPane(movieList);
+        BlueTheme.styleScrollPane(listScroll);
+
         movieListPanel.add(
-                new JScrollPane(movieList),
+                listScroll,
                 BorderLayout.CENTER
         );
 
@@ -140,12 +153,14 @@ public class MoviePanel extends JPanel {
         // Movie information panel
 
         JPanel movieInfoPanel = new JPanel(new BorderLayout(10, 10));
+        movieInfoPanel.setBackground(BlueTheme.CARD_BG);
 
         movieInfoPanel.setBorder(
-                BorderFactory.createTitledBorder("Movie Details")
+                BlueTheme.createBlueTitledBorder("Movie Details")
         );
 
-        JPanel posterPanel = new JPanel(new BorderLayout());
+        JPanel posterPanel = new JPanel(new BorderLayout(0, 6));
+        posterPanel.setBackground(BlueTheme.CARD_BG);
 
         posterPanel.add(
                 posterLabel,
@@ -158,8 +173,9 @@ public class MoviePanel extends JPanel {
         );
 
         posterHint.setFont(
-                new Font("Arial", Font.ITALIC, 12)
+                new Font("Segoe UI", Font.ITALIC, 12)
         );
+        posterHint.setForeground(BlueTheme.TEXT_MUTED);
 
         posterPanel.add(
                 posterHint,
@@ -171,8 +187,11 @@ public class MoviePanel extends JPanel {
                 BorderLayout.WEST
         );
 
+        JScrollPane detailsScroll = new JScrollPane(movieDetails);
+        BlueTheme.styleScrollPane(detailsScroll);
+
         movieInfoPanel.add(
-                new JScrollPane(movieDetails),
+                detailsScroll,
                 BorderLayout.CENTER
         );
 

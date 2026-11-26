@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.myticket.view.AdminPanel">
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="12">
+    <margin top="16" left="20" bottom="18" right="20"/>
+    <constraints>
+      <xy x="20" y="20" width="840" height="540"/>
+    </constraints>
+    <properties>
+      <background color="-525828"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <!-- HEADER BAR -->
+      <grid id="1001" binding="headerPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="0">
+        <margin top="12" left="18" bottom="12" right="18"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15792342"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="1002" class="javax.swing.JLabel" binding="headerTitleLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="20" style="1"/>
+              <foreground color="-1"/>
+              <text value="⚙  Admin Control Center"/>
+            </properties>
+          </component>
+          <component id="1003" class="javax.swing.JLabel" binding="headerSubtitleLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="11" style="1"/>
+              <foreground color="-12942869"/>
+              <text value="MOVIES &amp; SHOWTIMES"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+
+      <!-- MAIN TABBED WORKSPACE -->
+      <tabbedpane id="2001" binding="adminTabbedPane">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <font name="SansSerif" size="13" style="1"/>
+          <foreground color="-15792342"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <!-- TAB 1: MOVIE MANAGEMENT -->
+          <grid id="3001" binding="movieTabPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="0">
+            <margin top="14" left="14" bottom="14" right="14"/>
+            <constraints>
+              <tabbedpane title="Movie Management"/>
+            </constraints>
+            <properties>
+              <background color="-525828"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <!-- LEFT: ADD MOVIE CARD -->
+              <grid id="3101" binding="addMovieCardPanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="8">
+                <margin top="14" left="16" bottom="14" right="16"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                </properties>
+                <border type="line" title="Add New Movie">
+                  <color color="-1906965"/>
+                </border>
+                <children>
+                  <component id="3102" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Title"/>
+                    </properties>
+                  </component>
+                  <component id="3103" class="javax.swing.JTextField" binding="titleField">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="32"/>
+                        <preferred-size width="220" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+
+                  <component id="3104" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Genre"/>
+                    </properties>
+                  </component>
+                  <component id="3105" class="javax.swing.JTextField" binding="genreField">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="32"/>
+                        <preferred-size width="220" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+
+                  <component id="3106" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Duration (mins)"/>
+                    </properties>
+                  </component>
+                  <component id="3107" class="javax.swing.JTextField" binding="durationField">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="32"/>
+                        <preferred-size width="220" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+
+                  <component id="3108" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Rating"/>
+                    </properties>
+                  </component>
+                  <component id="3109" class="javax.swing.JTextField" binding="ratingField">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="32"/>
+                        <preferred-size width="220" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+
+                  <component id="3110" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Description"/>
+                    </properties>
+                  </component>
+                  <scrollpane id="3111" binding="descriptionScrollPane">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="80"/>
+                        <preferred-size width="220" height="90"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="3112" class="javax.swing.JTextArea" binding="descriptionArea">
+                        <constraints/>
+                        <properties>
+                          <background color="-525828"/>
+                          <font name="SansSerif" size="13" style="0"/>
+                          <foreground color="-15792342"/>
+                          <lineWrap value="true"/>
+                          <wrapStyleWord value="true"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+
+                  <component id="3113" class="javax.swing.JButton" binding="addMovieButton">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="-1" height="36"/>
+                        <preferred-size width="-1" height="36"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-14326805"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="13" style="1"/>
+                      <foreground color="-1"/>
+                      <opaque value="true"/>
+                      <text value="+ Add Movie"/>
+                    </properties>
+                  </component>
+
+                  <component id="3114" class="javax.swing.JButton" binding="clearButton">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="-1" height="32"/>
+                        <preferred-size width="-1" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1906965"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-15792342"/>
+                      <opaque value="true"/>
+                      <text value="Clear Fields"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+
+              <!-- RIGHT: MOVIE CATALOG CARD -->
+              <grid id="3201" binding="movieCatalogCardPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="10">
+                <margin top="14" left="16" bottom="14" right="16"/>
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="280" height="-1"/>
+                    <preferred-size width="320" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                </properties>
+                <border type="line" title="Movie Catalog">
+                  <color color="-1906965"/>
+                </border>
+                <children>
+                  <scrollpane id="3202" binding="movieScrollPane">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="3203" class="javax.swing.JList" binding="movieList">
+                        <constraints/>
+                        <properties>
+                          <font name="SansSerif" size="13" style="0"/>
+                          <foreground color="-15792342"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                  <component id="3204" class="javax.swing.JButton" binding="removeMovieButton">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="-1" height="34"/>
+                        <preferred-size width="-1" height="34"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-2539733"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-1"/>
+                      <opaque value="true"/>
+                      <text value="Remove Selected Movie"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+
+          <!-- TAB 2: SCHEDULE MANAGEMENT -->
+          <grid id="4001" binding="scheduleTabPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="0">
+            <margin top="14" left="14" bottom="14" right="14"/>
+            <constraints>
+              <tabbedpane title="Schedule Management"/>
+            </constraints>
+            <properties>
+              <background color="-525828"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <!-- LEFT: CREATE SCHEDULE CARD -->
+              <grid id="4101" binding="createScheduleCardPanel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="10">
+                <margin top="16" left="18" bottom="16" right="18"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="340" height="-1"/>
+                    <preferred-size width="380" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                </properties>
+                <border type="line" title="Create Movie Schedule">
+                  <color color="-1906965"/>
+                </border>
+                <children>
+                  <component id="4102" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Movie"/>
+                    </properties>
+                  </component>
+                  <component id="4103" class="javax.swing.JComboBox" binding="scheduleMovieCombo">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="32"/>
+                        <preferred-size width="210" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+
+                  <component id="4104" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Date (YYYY-MM-DD)"/>
+                    </properties>
+                  </component>
+                  <component id="4105" class="javax.swing.JTextField" binding="dateField">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="32"/>
+                        <preferred-size width="210" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+
+                  <component id="4106" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Time (HH:MM)"/>
+                    </properties>
+                  </component>
+                  <component id="4107" class="javax.swing.JTextField" binding="timeField">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="32"/>
+                        <preferred-size width="210" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+
+                  <component id="4108" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-13419445"/>
+                      <text value="Ticket Price"/>
+                    </properties>
+                  </component>
+                  <component id="4109" class="javax.swing.JTextField" binding="priceField">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="180" height="32"/>
+                        <preferred-size width="210" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+
+                  <component id="4110" class="javax.swing.JButton" binding="createScheduleButton">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="-1" height="36"/>
+                        <preferred-size width="-1" height="36"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-14326805"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="13" style="1"/>
+                      <foreground color="-1"/>
+                      <opaque value="true"/>
+                      <text value="+ Create Schedule"/>
+                    </properties>
+                  </component>
+
+                  <component id="4111" class="javax.swing.JButton" binding="clearScheduleButton">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="-1" height="32"/>
+                        <preferred-size width="-1" height="32"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1906965"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="12" style="1"/>
+                      <foreground color="-15792342"/>
+                      <opaque value="true"/>
+                      <text value="Clear Fields"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+
+              <!-- RIGHT: EXISTING SCHEDULES CARD -->
+              <grid id="4201" binding="scheduleListCardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="14" left="16" bottom="14" right="16"/>
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                </properties>
+                <border type="line" title="Existing Schedules">
+                  <color color="-1906965"/>
+                </border>
+                <children>
+                  <scrollpane id="4202" binding="scheduleScrollPane">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="4203" class="javax.swing.JList" binding="scheduleList">
+                        <constraints/>
+                        <properties>
+                          <font name="SansSerif" size="13" style="0"/>
+                          <foreground color="-15792342"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+    </children>
+  </grid>
+</form>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.myticket.view.LoginFrame">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="760" height="460"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <!-- LEFT BRANDING PANEL -->
+      <grid id="a101" binding="brandPanel" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
+        <margin top="36" left="32" bottom="36" right="32"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="310" height="460"/>
+            <preferred-size width="310" height="460"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15792342"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <vspacer id="a102">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="a103" class="javax.swing.JLabel" binding="logoIconLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="42" style="1"/>
+              <foreground color="-12942869"/>
+              <text value="🎟"/>
+            </properties>
+          </component>
+          <component id="a104" class="javax.swing.JLabel" binding="titleLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="30" style="1"/>
+              <foreground color="-1"/>
+              <text value="&lt;html&gt;&lt;span style='color:#FFFFFF;'&gt;MY&lt;/span&gt;&lt;span style='color:#38BDF8;'&gt;TICKET&lt;/span&gt;&lt;/html&gt;"/>
+            </properties>
+          </component>
+          <component id="a105" class="javax.swing.JLabel" binding="taglineLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="13" style="0"/>
+              <foreground color="-7037269"/>
+              <text value="&lt;html&gt;Fast, seamless event &amp;amp; cinema&lt;br&gt;seat booking at your fingertips.&lt;/html&gt;"/>
+            </properties>
+          </component>
+          <vspacer id="a106">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="a107" class="javax.swing.JLabel" binding="footerBadgeLabel">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="11" style="1"/>
+              <foreground color="-12942869"/>
+              <text value="●  OFFICIAL TICKETING PORTAL"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+
+      <!-- RIGHT FORM PANEL -->
+      <grid id="b201" binding="formPanel" layout-manager="GridLayoutManager" row-count="10" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="6">
+        <margin top="36" left="44" bottom="36" right="44"/>
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="430" height="460"/>
+            <preferred-size width="430" height="460"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <vspacer id="b202">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="b203" class="javax.swing.JLabel" binding="welcomeHeaderLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="24" style="1"/>
+              <foreground color="-15792342"/>
+              <text value="Welcome back"/>
+            </properties>
+          </component>
+          <component id="b204" class="javax.swing.JLabel" binding="welcomeSubLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="13" style="0"/>
+              <foreground color="-10195591"/>
+              <text value="Sign in to access your bookings and dashboard"/>
+            </properties>
+          </component>
+          <component id="b205" class="javax.swing.JLabel" binding="usernameLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="12" style="1"/>
+              <foreground color="-13419445"/>
+              <text value="USERNAME"/>
+            </properties>
+          </component>
+          <component id="b206" class="javax.swing.JTextField" binding="usernameField">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="320" height="38"/>
+                <preferred-size width="320" height="38"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-525828"/>
+              <font name="SansSerif" size="14" style="0"/>
+              <foreground color="-15792342"/>
+            </properties>
+          </component>
+          <component id="b207" class="javax.swing.JLabel" binding="passwordLabel">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="12" style="1"/>
+              <foreground color="-13419445"/>
+              <text value="PASSWORD"/>
+            </properties>
+          </component>
+          <component id="b208" class="javax.swing.JPasswordField" binding="passwordField">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="320" height="38"/>
+                <preferred-size width="320" height="38"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-525828"/>
+              <font name="SansSerif" size="14" style="0"/>
+              <foreground color="-15792342"/>
+            </properties>
+          </component>
+          <component id="b209" class="javax.swing.JCheckBox" binding="showPasswordCheckBox">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <focusPainted value="false"/>
+              <font name="SansSerif" size="12" style="0"/>
+              <foreground color="-10195591"/>
+              <text value="Show password"/>
+            </properties>
+          </component>
+          <component id="b210" class="javax.swing.JButton" binding="loginButton">
+            <constraints>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="320" height="42"/>
+                <preferred-size width="320" height="42"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-14326805"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="SansSerif" size="15" style="1"/>
+              <foreground color="-1"/>
+              <opaque value="true"/>
+              <text value="Sign In  →"/>
+            </properties>
+          </component>
+          <vspacer id="b211">
+            <constraints>
+              <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

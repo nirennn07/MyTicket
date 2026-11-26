@@ -1,4 +1,3 @@
-
 package com.myticket.view;
 
 import com.myticket.model.Movie;
@@ -10,12 +9,34 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    private BookingService bookingService;
+    private final BookingService bookingService;
+    private final boolean admin;
+    private final String username;
 
-    private boolean admin;
-    private String username;
+    // Bound automatically from MainFrame.form (Left Sidebar + Featured Banner)
+    private JPanel mainPanel;
+    private JPanel navigationPanel;
+    private JLabel brandTitleLabel;
+    private JLabel userBadgeLabel;
+    private JLabel menuSectionLabel;
+    private JButton moviesButton;
+    private JButton ticketsButton;
+    private JButton adminButton;
+    private JButton logoutButton;
 
-    private CardLayout cardLayout;
+    private JPanel rightWorkspacePanel;
+    private JPanel headerBarPanel;
+    private JLabel pageTitleLabel;
+    private JLabel pageSubtitleLabel;
+
+    private JPanel featuredBannerPanel;
+    private JPanel proxyPosterCard;
+    private JLabel proxyPosterLabel;
+    private JPanel spotlightInfoPanel;
+    private JLabel spotlightTagLabel;
+    private JLabel spotlightTitleLabel;
+    private JLabel spotlightDescLabel;
+
     private JPanel contentPanel;
 
     private MoviePanel moviePanel;
@@ -29,270 +50,92 @@ public class MainFrame extends JFrame {
     // CONSTRUCTORS
     // ==============================
 
-    // Original constructor retained for compatibility
-    public MainFrame(
-            BookingService bookingService,
-            boolean admin) {
-
-        this(
-                bookingService,
-                admin,
-                "Unknown"
-        );
+    public MainFrame(BookingService bookingService, boolean admin) {
+        this(bookingService, admin, "Unknown");
     }
 
-    // New constructor with username
-    public MainFrame(
-            BookingService bookingService,
-            boolean admin,
-            String username) {
-
+    public MainFrame(BookingService bookingService, boolean admin, String username) {
         this.bookingService = bookingService;
         this.admin = admin;
         this.username = username;
 
         setTitle("MyTicket");
-        setSize(900, 600);
+        setContentPane(mainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
         setLocationRelativeTo(null);
 
-        initializeComponents();
+        initializeViews();
     }
 
     // ==============================
-    // INITIALIZE COMPONENTS
+    // INITIALIZE VIEWS & ACTIONS
     // ==============================
 
-    private void initializeComponents() {
+    private void initializeViews() {
+        userBadgeLabel.setText("●  " + username + (admin ? " (Admin)" : ""));
+        adminButton.setVisible(admin);
 
-        setLayout(new BorderLayout());
+        moviePanel = new MoviePanel(bookingService, this::showScheduleSelection);
+        ticketPanel = new TicketPanel(bookingService, username);
+        adminPanel = new AdminPanel(bookingService);
 
-        // ==============================
-        // NAVIGATION PANEL
-        // ==============================
-
-        JPanel navigationPanel = new JPanel();
-
-        navigationPanel.setLayout(
-                new BoxLayout(
-                        navigationPanel,
-                        BoxLayout.Y_AXIS
-                )
-        );
-
-        navigationPanel.setPreferredSize(
-                new Dimension(180, 600)
-        );
-
-        navigationPanel.setBorder(
-                BorderFactory.createEmptyBorder(
-                        15, 10, 15, 10
-                )
-        );
-
-        JButton moviesButton =
-                new JButton("Movies");
-
-        JButton ticketsButton =
-                new JButton("My Tickets");
-
-        JButton logoutButton =
-                new JButton("Logout");
-
-        moviesButton.setMaximumSize(
-                new Dimension(
-                        Integer.MAX_VALUE,
-                        40
-                )
-        );
-
-        ticketsButton.setMaximumSize(
-                new Dimension(
-                        Integer.MAX_VALUE,
-                        40
-                )
-        );
-
-        logoutButton.setMaximumSize(
-                new Dimension(
-                        Integer.MAX_VALUE,
-                        40
-                )
-        );
-
-        navigationPanel.add(moviesButton);
-
-        navigationPanel.add(
-                Box.createVerticalStrut(10)
-        );
-
-        navigationPanel.add(ticketsButton);
-
-        navigationPanel.add(
-                Box.createVerticalStrut(10)
-        );
-
-        // ==============================
-        // ADMIN BUTTON
-        // ==============================
-
-        if (admin) {
-
-            JButton adminButton =
-                    new JButton("Admin Panel");
-
-            adminButton.setMaximumSize(
-                    new Dimension(
-                            Integer.MAX_VALUE,
-                            40
-                    )
-            );
-
-            navigationPanel.add(adminButton);
-
-            navigationPanel.add(
-                    Box.createVerticalStrut(10)
-            );
-
-            adminButton.addActionListener(e -> {
-
-                cardLayout.show(
-                        contentPanel,
-                        "ADMIN"
-                );
-
-                adminPanel.refreshMovies();
-            });
-        }
-
-        navigationPanel.add(
-                Box.createVerticalGlue()
-        );
-
-        navigationPanel.add(logoutButton);
-
-        add(
-                navigationPanel,
-                BorderLayout.WEST
-        );
-
-        // ==============================
-        // CONTENT PANEL
-        // ==============================
-
-        cardLayout = new CardLayout();
-
-        contentPanel = new JPanel(cardLayout);
-
-        // ==============================
-        // MOVIE PANEL
-        // ==============================
-
-        moviePanel = new MoviePanel(
-                bookingService,
-                this::showScheduleSelection
-        );
-
-        // ==============================
-        // TICKET PANEL
-        // ==============================
-
-        ticketPanel = new TicketPanel(
-                bookingService,
-                username
-        );
-
-        // ==============================
-        // ADMIN PANEL
-        // ==============================
-
-        adminPanel = new AdminPanel(
-                bookingService
-        );
-
-        // ==============================
-        // ADD PANELS
-        // ==============================
-
-        contentPanel.add(
-                moviePanel,
-                "MOVIES"
-        );
-
-        contentPanel.add(
-                ticketPanel,
-                "TICKETS"
-        );
-
-        contentPanel.add(
-                adminPanel,
-                "ADMIN"
-        );
-
-        add(
-                contentPanel,
-                BorderLayout.CENTER
-        );
-
-        // ==============================
-        // NAVIGATION ACTIONS
-        // ==============================
+        contentPanel.add(moviePanel, "MOVIES");
+        contentPanel.add(ticketPanel, "TICKETS");
+        contentPanel.add(adminPanel, "ADMIN");
 
         moviesButton.addActionListener(e -> {
-
             moviePanel.refreshMovies();
-
-            cardLayout.show(
-                    contentPanel,
-                    "MOVIES"
-            );
+            showCard("MOVIES", "Now Showing", true, moviesButton);
         });
 
         ticketsButton.addActionListener(e -> {
-
             ticketPanel.refreshTickets();
-
-            cardLayout.show(
-                    contentPanel,
-                    "TICKETS"
-            );
+            showCard("TICKETS", "My Tickets", false, ticketsButton);
         });
 
-        // ==============================
-        // LOGOUT
-        // ==============================
+        adminButton.addActionListener(e -> {
+            adminPanel.refreshMovies();
+            showCard("ADMIN", "Admin Dashboard", false, adminButton);
+        });
 
         logoutButton.addActionListener(e -> {
-
-            int choice =
-                    JOptionPane.showConfirmDialog(
-                            this,
-                            "Are you sure you want to logout?",
-                            "Logout",
-                            JOptionPane.YES_NO_OPTION
-                    );
+            int choice = JOptionPane.showConfirmDialog(
+                    this,
+                    "Are you sure you want to logout?",
+                    "Logout",
+                    JOptionPane.YES_NO_OPTION
+            );
 
             if (choice == JOptionPane.YES_OPTION) {
-
-                LoginFrame loginFrame =
-                        new LoginFrame(
-                                bookingService
-                        );
-
+                LoginFrame loginFrame = new LoginFrame(bookingService);
                 loginFrame.setVisible(true);
-
                 dispose();
             }
         });
 
-        // ==============================
-        // INITIAL SCREEN
-        // ==============================
+        showCard("MOVIES", "Now Showing", true, moviesButton);
+    }
 
-        cardLayout.show(
-                contentPanel,
-                "MOVIES"
-        );
+    private void showCard(String cardName, String title, boolean showBanner, JButton activeButton) {
+        CardLayout layout = (CardLayout) contentPanel.getLayout();
+        layout.show(contentPanel, cardName);
+
+        pageTitleLabel.setText(title);
+        featuredBannerPanel.setVisible(showBanner);
+
+        Color activeBg = new Color(0x2563EB);
+        Color inactiveBg = new Color(0x1E293B);
+        Color activeFg = Color.WHITE;
+        Color inactiveFg = new Color(0xE2E8F0);
+
+        JButton[] navButtons = {moviesButton, ticketsButton, adminButton};
+        for (JButton btn : navButtons) {
+            boolean isActive = (btn == activeButton);
+            btn.setBackground(isActive ? activeBg : inactiveBg);
+            btn.setForeground(isActive ? activeFg : inactiveFg);
+            btn.setFont(btn.getFont().deriveFont(isActive ? Font.BOLD : Font.PLAIN));
+        }
     }
 
     // ==============================
@@ -300,48 +143,22 @@ public class MainFrame extends JFrame {
     // ==============================
 
     public void showScheduleSelection(Movie movie) {
-
-        // Remove previous schedule panel
-
         if (scheduleSelectionPanel != null) {
-
-            contentPanel.remove(
-                    scheduleSelectionPanel
-            );
+            contentPanel.remove(scheduleSelectionPanel);
         }
 
-        scheduleSelectionPanel =
-                new ScheduleSelectionPanel(
-                        bookingService,
-                        movie,
-
-                        // Schedule selected
-                        selectedSchedule ->
-                                showSeatSelection(
-                                        selectedSchedule
-                                ),
-
-                        // Back button
-                        () -> {
-
-                            moviePanel.refreshMovies();
-
-                            cardLayout.show(
-                                    contentPanel,
-                                    "MOVIES"
-                            );
-                        }
-                );
-
-        contentPanel.add(
-                scheduleSelectionPanel,
-                "SCHEDULE_SELECTION"
+        scheduleSelectionPanel = new ScheduleSelectionPanel(
+                bookingService,
+                movie,
+                this::showSeatSelection,
+                () -> {
+                    moviePanel.refreshMovies();
+                    showCard("MOVIES", "Now Showing", true, moviesButton);
+                }
         );
 
-        cardLayout.show(
-                contentPanel,
-                "SCHEDULE_SELECTION"
-        );
+        contentPanel.add(scheduleSelectionPanel, "SCHEDULE_SELECTION");
+        showCard("SCHEDULE_SELECTION", "Select Schedule — " + movie.getTitle(), false, moviesButton);
 
         contentPanel.revalidate();
         contentPanel.repaint();
@@ -352,48 +169,23 @@ public class MainFrame extends JFrame {
     // ==============================
 
     public void showSeatSelection(Schedule schedule) {
-
-        // Remove previous seat selection panel
-
         if (seatSelectionPanel != null) {
-
-            contentPanel.remove(
-                    seatSelectionPanel
-            );
+            contentPanel.remove(seatSelectionPanel);
         }
 
-        seatSelectionPanel =
-                new SeatSelectionPanel(
-                        bookingService,
-                        schedule,
-                        username,
-
-                        // Booking completed
-                        () -> {
-
-                            ticketPanel.refreshTickets();
-
-                            cardLayout.show(
-                                    contentPanel,
-                                    "TICKETS"
-                            );
-                        },
-
-                        // Back to schedule selection
-                        () -> showScheduleSelection(
-                                schedule.getMovie()
-                        )
-                );
-
-        contentPanel.add(
-                seatSelectionPanel,
-                "SEAT_SELECTION"
+        seatSelectionPanel = new SeatSelectionPanel(
+                bookingService,
+                schedule,
+                username,
+                () -> {
+                    ticketPanel.refreshTickets();
+                    showCard("TICKETS", "My Tickets", false, ticketsButton);
+                },
+                () -> showScheduleSelection(schedule.getMovie())
         );
 
-        cardLayout.show(
-                contentPanel,
-                "SEAT_SELECTION"
-        );
+        contentPanel.add(seatSelectionPanel, "SEAT_SELECTION");
+        showCard("SEAT_SELECTION", "Choose Your Seats", false, moviesButton);
 
         contentPanel.revalidate();
         contentPanel.repaint();

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.myticket.view.SeatSelectionPanel">
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="12">
+    <margin top="14" left="18" bottom="16" right="18"/>
+    <constraints>
+      <xy x="20" y="20" width="900" height="580"/>
+    </constraints>
+    <properties>
+      <background color="-525828"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="1001" binding="topHeaderPanel" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="0">
+        <margin top="10" left="14" bottom="10" right="16"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15792342"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="1002" class="javax.swing.JButton" binding="backButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="105" height="34"/>
+                <preferred-size width="115" height="34"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-14800581"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="SansSerif" size="12" style="1"/>
+              <foreground color="-1"/>
+              <opaque value="true"/>
+              <text value="←  Back"/>
+            </properties>
+          </component>
+          <grid id="1003" binding="headerTitleGroup" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <opaque value="false"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="1004" class="javax.swing.JLabel" binding="titleLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="SansSerif" size="18" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="Select Your Seats"/>
+                </properties>
+              </component>
+              <component id="1005" class="javax.swing.JLabel" binding="showtimeInfoLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="SansSerif" size="12" style="0"/>
+                  <foreground color="-7037269"/>
+                  <text value="Showtime Details"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <hspacer id="1006">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <component id="1007" class="javax.swing.JLabel" binding="seatCounterBadge">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="12" style="1"/>
+              <foreground color="-12942869"/>
+              <text value="0 SEATS SELECTED"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="2001" binding="mainSplitPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="0">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <opaque value="false"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="2101" binding="theaterCardPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="12">
+            <margin top="14" left="18" bottom="14" right="18"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="line">
+              <color color="-1906965"/>
+            </border>
+            <children>
+              <grid id="2102" binding="screenStagePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="8" left="12" bottom="8" right="12"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="38"/>
+                    <preferred-size width="-1" height="38"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-15792342"/>
+                </properties>
+                <border type="line">
+                  <color color="-12942869"/>
+                </border>
+                <children>
+                  <component id="2103" class="javax.swing.JLabel" binding="screenLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="13" style="1"/>
+                      <foreground color="-12942869"/>
+                      <horizontalAlignment value="0"/>
+                      <text value="▲   C I N E M A   S C R E E N   ▲"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="2104" binding="seatsPanel" layout-manager="GridLayout" row-count="1" column-count="5" hgap="10" vgap="10">
+                <margin top="12" left="16" bottom="12" right="16"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-525828"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
+              <grid id="2105" binding="legendFooterPanel" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="0">
+                <margin top="6" left="4" bottom="2" right="4"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="2106" class="javax.swing.JLabel" binding="legendAvailableLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-13712335"/>
+                      <font name="SansSerif" size="11" style="1"/>
+                      <foreground color="-1"/>
+                      <opaque value="true"/>
+                      <text value="  Available  "/>
+                    </properties>
+                  </component>
+                  <component id="2107" class="javax.swing.JLabel" binding="legendSelectedLabel">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-866545"/>
+                      <font name="SansSerif" size="11" style="1"/>
+                      <foreground color="-15792342"/>
+                      <opaque value="true"/>
+                      <text value="  Selected  "/>
+                    </properties>
+                  </component>
+                  <component id="2108" class="javax.swing.JLabel" binding="legendSeniorLabel">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-13330213"/>
+                      <font name="SansSerif" size="11" style="1"/>
+                      <foreground color="-1"/>
+                      <opaque value="true"/>
+                      <text value="  Senior (20% Off)  "/>
+                    </properties>
+                  </component>
+                  <component id="2109" class="javax.swing.JLabel" binding="legendUnavailableLabel">
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1618020"/>
+                      <font name="SansSerif" size="11" style="1"/>
+                      <foreground color="-1"/>
+                      <opaque value="true"/>
+                      <text value="  Unavailable  "/>
+                    </properties>
+                  </component>
+                  <component id="2110" class="javax.swing.JButton" binding="clearSelectionButton">
+                    <constraints>
+                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <minimum-size width="95" height="26"/>
+                        <preferred-size width="105" height="26"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1906965"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="11" style="1"/>
+                      <foreground color="-15792342"/>
+                      <opaque value="true"/>
+                      <text value="Clear Picks"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="2201" binding="rightDrawerPanel" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="10">
+            <margin top="14" left="16" bottom="14" right="16"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="280" height="-1"/>
+                <preferred-size width="305" height="-1"/>
+                <maximum-size width="340" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="line" title="Booking Summary">
+              <color color="-1906965"/>
+            </border>
+            <children>
+              <component id="2202" class="javax.swing.JLabel" binding="selectedSeatsTitle">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="SansSerif" size="14" style="1"/>
+                  <foreground color="-15792342"/>
+                  <text value="Selected Seats"/>
+                </properties>
+              </component>
+              <scrollpane id="2203" binding="selectedSeatsScrollPane">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="105"/>
+                    <preferred-size width="-1" height="125"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="2204" binding="selectedSeatsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="4">
+                    <margin top="6" left="8" bottom="6" right="8"/>
+                    <constraints/>
+                    <properties>
+                      <background color="-525828"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
+              </scrollpane>
+              <grid id="2205" binding="addOnsCardPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="4">
+                <margin top="8" left="10" bottom="8" right="10"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-525828"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="2206" class="javax.swing.JLabel" binding="addOnsTitle">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="14" style="1"/>
+                      <foreground color="-15792342"/>
+                      <text value="Food &amp; Drinks"/>
+                    </properties>
+                  </component>
+                  <component id="2207" class="javax.swing.JCheckBox" binding="popcornCheckBox">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="12" style="0"/>
+                      <foreground color="-15792342"/>
+                      <text value="Popcorn Combo - ₱150"/>
+                    </properties>
+                  </component>
+                  <component id="2208" class="javax.swing.JCheckBox" binding="drinkCheckBox">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="12" style="0"/>
+                      <foreground color="-15792342"/>
+                      <text value="Drink - ₱80"/>
+                    </properties>
+                  </component>
+                  <component id="2209" class="javax.swing.JCheckBox" binding="snackCheckBox">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-525828"/>
+                      <focusPainted value="false"/>
+                      <font name="SansSerif" size="12" style="0"/>
+                      <foreground color="-15792342"/>
+                      <text value="Snack - ₱100"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="2210" binding="totalCardPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="2">
+                <margin top="10" left="12" bottom="10" right="12"/>
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-15792342"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="2211" class="javax.swing.JLabel" binding="totalTitle">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="11" style="1"/>
+                      <foreground color="-12942869"/>
+                      <text value="TOTAL AMOUNT"/>
+                    </properties>
+                  </component>
+                  <component id="2212" class="javax.swing.JLabel" binding="totalLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="24" style="1"/>
+                      <foreground color="-1"/>
+                      <text value="₱0.00"/>
+                    </properties>
+                  </component>
+                  <component id="2213" class="javax.swing.JLabel" binding="savingsLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="11" style="0"/>
+                      <foreground color="-7037269"/>
+                      <text value="Senior discount: ₱0.00"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <vspacer id="2214">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="2215" class="javax.swing.JButton" binding="bookButton">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="42"/>
+                    <preferred-size width="-1" height="42"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-14326805"/>
+                  <borderPainted value="false"/>
+                  <focusPainted value="false"/>
+                  <font name="SansSerif" size="14" style="1"/>
+                  <foreground color="-1"/>
+                  <opaque value="true"/>
+                  <text value="Confirm Booking  →"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

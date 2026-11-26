@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.myticket.view.ScheduleSelectionPanel">
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="12">
+    <margin top="16" left="20" bottom="18" right="20"/>
+    <constraints>
+      <xy x="20" y="20" width="840" height="540"/>
+    </constraints>
+    <properties>
+      <background color="-525828"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <!-- TOP DARK SHOWTIME HEADER -->
+      <grid id="1001" binding="headerCardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="14" vgap="0">
+        <margin top="12" left="16" bottom="12" right="18"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15792342"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="1002" class="javax.swing.JButton" binding="backButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="145" height="36"/>
+                <preferred-size width="155" height="36"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-14800581"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="SansSerif" size="12" style="1"/>
+              <foreground color="-1"/>
+              <opaque value="true"/>
+              <text value="←  Back to Movies"/>
+            </properties>
+          </component>
+          <grid id="1003" binding="titleBlockPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="2">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <opaque value="false"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="1004" class="javax.swing.JLabel" binding="titleLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="SansSerif" size="19" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="Select a Schedule"/>
+                </properties>
+              </component>
+              <component id="1005" class="javax.swing.JLabel" binding="movieLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="SansSerif" size="13" style="1"/>
+                  <foreground color="-12942869"/>
+                  <text value="Movie Title"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="1006" class="javax.swing.JLabel" binding="loungeTagLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="11" style="1"/>
+              <foreground color="-12942869"/>
+              <text value="🕒  SHOWTIMES"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+
+      <!-- MAIN SPLIT: LEFT SHOWTIME LIST + RIGHT DETAILS & CTA -->
+      <grid id="2001" binding="mainSplitPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="0">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <opaque value="false"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <!-- LEFT: SCHEDULE LIST CARD -->
+          <grid id="2101" binding="scheduleListCardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+            <margin top="12" left="12" bottom="12" right="12"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="285" height="-1"/>
+                <preferred-size width="320" height="-1"/>
+                <maximum-size width="360" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="line" title="Available Showtimes">
+              <color color="-1906965"/>
+            </border>
+            <children>
+              <scrollpane id="2102" binding="scheduleScrollPane">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2103" class="javax.swing.JList" binding="scheduleList">
+                    <constraints/>
+                    <properties>
+                      <font name="SansSerif" size="14" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+
+          <!-- RIGHT: SHOWTIME SPOTLIGHT + DETAILS + SELECT CTA -->
+          <grid id="2201" binding="detailsCardPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="12">
+            <margin top="14" left="16" bottom="14" right="16"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="line" title="Schedule Details">
+              <color color="-1906965"/>
+            </border>
+            <children>
+              <!-- QUICK SUMMARY BANNER -->
+              <grid id="2202" binding="spotlightStripPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="0">
+                <margin top="10" left="14" bottom="10" right="14"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-15792342"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="2203" class="javax.swing.JLabel" binding="previewBadgeLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="13" style="1"/>
+                      <foreground color="-1"/>
+                      <text value="🎬  SCREENING PASS"/>
+                    </properties>
+                  </component>
+                  <component id="2204" class="javax.swing.JLabel" binding="priceQuickLabel">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="13" style="1"/>
+                      <foreground color="-12942869"/>
+                      <text value="Pick a time slot"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+
+              <!-- SCHEDULE DETAILS TEXT -->
+              <scrollpane id="2205" binding="detailsScrollPane">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2206" class="javax.swing.JTextArea" binding="scheduleDetailsArea">
+                    <constraints/>
+                    <properties>
+                      <background color="-525828"/>
+                      <editable value="false"/>
+                      <font name="SansSerif" size="14" style="0"/>
+                      <foreground color="-15792342"/>
+                      <lineWrap value="true"/>
+                      <wrapStyleWord value="true"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+
+              <!-- SELECT SCHEDULE ACTION BUTTON -->
+              <component id="2207" class="javax.swing.JButton" binding="selectScheduleButton">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="40"/>
+                    <preferred-size width="-1" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-14326805"/>
+                  <borderPainted value="false"/>
+                  <focusPainted value="false"/>
+                  <font name="SansSerif" size="14" style="1"/>
+                  <foreground color="-1"/>
+                  <opaque value="true"/>
+                  <text value="Select Schedule  →"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

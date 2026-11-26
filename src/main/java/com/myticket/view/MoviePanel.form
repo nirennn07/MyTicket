@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.myticket.view.MoviePanel">
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="0">
+    <margin top="14" left="16" bottom="14" right="16"/>
+    <constraints>
+      <xy x="20" y="20" width="760" height="460"/>
+    </constraints>
+    <properties>
+      <background color="-525828"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="10a1" binding="movieListPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+        <margin top="8" left="8" bottom="8" right="8"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="260" height="-1"/>
+            <preferred-size width="280" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none" title="Available Movies"/>
+        <children>
+          <scrollpane id="10a2" binding="movieListScrollPane">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="10a3" class="javax.swing.JList" binding="movieList">
+                <constraints/>
+                <properties>
+                  <font name="SansSerif" size="15" style="0"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="20b1" binding="movieInfoPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="10">
+        <margin top="10" left="14" bottom="12" right="14"/>
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="360" height="-1"/>
+            <preferred-size width="420" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none" title="Movie Details"/>
+        <children>
+          <grid id="20b2" binding="posterPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+            <margin top="6" left="6" bottom="6" right="6"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="200" height="170"/>
+                <preferred-size width="220" height="185"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-15792342"/>
+            </properties>
+            <border type="line">
+              <color color="-12942869"/>
+            </border>
+            <children>
+              <component id="20b3" class="javax.swing.JLabel" binding="posterLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="SansSerif" size="13" style="1"/>
+                  <foreground color="-12942869"/>
+                  <horizontalAlignment value="0"/>
+                  <text value="Select a movie to view its poster"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="20b4" class="javax.swing.JLabel" binding="posterHintLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="11" style="2"/>
+              <foreground color="-10195591"/>
+              <horizontalAlignment value="0"/>
+              <text value="Click poster to view high resolution"/>
+            </properties>
+          </component>
+          <scrollpane id="20b5" binding="detailsScrollPane">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="20b6" class="javax.swing.JTextArea" binding="movieDetails">
+                <constraints/>
+                <properties>
+                  <background color="-525828"/>
+                  <editable value="false"/>
+                  <font name="SansSerif" size="13" style="0"/>
+                  <foreground color="-15792342"/>
+                  <lineWrap value="true"/>
+                  <wrapStyleWord value="true"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <component id="20b7" class="javax.swing.JButton" binding="selectMovieButton">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="38"/>
+                <preferred-size width="-1" height="38"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-14326805"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="SansSerif" size="13" style="1"/>
+              <foreground color="-1"/>
+              <opaque value="true"/>
+              <text value="Select Movie"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

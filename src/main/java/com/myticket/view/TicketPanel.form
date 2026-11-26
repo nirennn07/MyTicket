@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.myticket.view.TicketPanel">
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="12">
+    <margin top="16" left="20" bottom="18" right="20"/>
+    <constraints>
+      <xy x="20" y="20" width="840" height="540"/>
+    </constraints>
+    <properties>
+      <background color="-525828"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <!-- TOP BANNER -->
+      <grid id="1001" binding="headerCardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="0">
+        <margin top="12" left="18" bottom="12" right="18"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15792342"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="1002" class="javax.swing.JLabel" binding="headerTitleLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="20" style="1"/>
+              <foreground color="-1"/>
+              <text value="🎫  My Digital Tickets"/>
+            </properties>
+          </component>
+          <component id="1003" class="javax.swing.JLabel" binding="headerHintLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="SansSerif" size="11" style="1"/>
+              <foreground color="-12942869"/>
+              <text value="SELECT A TICKET TO VIEW QR PASS"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+
+      <!-- MAIN SPLIT: LEFT TICKET LIST + RIGHT E-TICKET PASS -->
+      <grid id="2001" binding="mainContentPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="0">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <opaque value="false"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <!-- LEFT: TICKET LIST CARD -->
+          <grid id="2101" binding="ticketListCardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+            <margin top="12" left="12" bottom="12" right="12"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="255" height="-1"/>
+                <preferred-size width="275" height="-1"/>
+                <maximum-size width="310" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="line" title="Booked Tickets">
+              <color color="-1906965"/>
+            </border>
+            <children>
+              <scrollpane id="2102" binding="ticketScrollPane">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2103" class="javax.swing.JList" binding="ticketList">
+                    <constraints/>
+                    <properties>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+
+          <!-- RIGHT: E-TICKET DETAILS + QR PASS CARD -->
+          <grid id="2201" binding="ticketPassCardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="14" vgap="0">
+            <margin top="14" left="16" bottom="14" right="16"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="line" title="Ticket &amp; Booking Details">
+              <color color="-1906965"/>
+            </border>
+            <children>
+              <!-- DETAILS TEXT AREA -->
+              <scrollpane id="2202" binding="detailsScrollPane">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2203" class="javax.swing.JTextArea" binding="ticketDetailsArea">
+                    <constraints/>
+                    <properties>
+                      <background color="-525828"/>
+                      <editable value="false"/>
+                      <font name="SansSerif" size="13" style="0"/>
+                      <foreground color="-15792342"/>
+                      <lineWrap value="true"/>
+                      <wrapStyleWord value="true"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+
+              <!-- RIGHT QR CODE SCAN PANEL -->
+              <grid id="2204" binding="qrPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="8">
+                <margin top="14" left="14" bottom="14" right="14"/>
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="235" height="-1"/>
+                    <preferred-size width="245" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-525828"/>
+                </properties>
+                <border type="line">
+                  <color color="-1906965"/>
+                </border>
+                <children>
+                  <component id="2205" class="javax.swing.JLabel" binding="qrTitleLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="14" style="1"/>
+                      <foreground color="-15792342"/>
+                      <horizontalAlignment value="0"/>
+                      <text value="Ticket QR Code"/>
+                    </properties>
+                  </component>
+                  <component id="2206" class="javax.swing.JLabel" binding="qrCodeLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <minimum-size width="190" height="190"/>
+                        <preferred-size width="200" height="200"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                      <font name="SansSerif" size="12" style="0"/>
+                      <foreground color="-10195591"/>
+                      <horizontalAlignment value="0"/>
+                      <opaque value="true"/>
+                      <text value="No ticket selected"/>
+                    </properties>
+                  </component>
+                  <component id="2207" class="javax.swing.JLabel" binding="qrSubLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="SansSerif" size="11" style="2"/>
+                      <foreground color="-10195591"/>
+                      <horizontalAlignment value="0"/>
+                      <text value="Scan at cinema entrance"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
